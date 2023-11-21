@@ -33,9 +33,9 @@ select:
     id: temperature_profile_select
     icon: mdi:thermometer
     options:
-     - "Normal"
-     - "Cool"
      - "Warm"
+     - "Cool"
+     - "Normal"
     set_action:
       - if:
           condition:
@@ -58,9 +58,9 @@ select:
     id: temperature_passive_select
     icon: mdi:thermometer-minus
     options:
-     - "On"
-     - "Auto only"
      - "Off"
+     - "Auto only"
+     - "On"
     set_action:
       # map options to enum
       - lambda: |
@@ -95,9 +95,9 @@ select:
     id: humidity_protection_select
     icon: mdi:water-percent
     options:
-     - "On"
-     - "Auto only"
      - "Off"
+     - "Auto only"
+     - "On"
     set_action: 
       - lambda: |
           if (x == "Off") {
