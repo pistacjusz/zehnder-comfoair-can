@@ -11,11 +11,11 @@ fan:
       #- switch.turn_on: auto_ventilation
      - select.set:
           id: fan_level_select
-          option: "Away"
+          option: "Low"
     on_turn_off:
       - select.set:
           id: fan_level_select
-          option: "Low"
+          option: "Away"
     on_speed_set:
       - if:
           condition:
