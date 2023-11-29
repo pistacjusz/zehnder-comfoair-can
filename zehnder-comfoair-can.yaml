@@ -38,7 +38,7 @@ logger:
     canbus: INFO
 
 external_components:
-  - source: github://dan-s-github/zehnder-comfoair-can
+  - source: github://pistacjusz/zehnder-comfoair-can
     components: [ zehnder_comfoair_q  ]
 
 # See docs: https://github.com/michaelarnauts/aiocomfoconnect/blob/master/docs/PROTOCOL-PDO.md
