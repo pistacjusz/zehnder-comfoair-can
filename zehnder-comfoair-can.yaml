@@ -3,8 +3,8 @@ substitutions:
   filter_time: 5s
   filter_send_every: '1'
   filter_window_size: '3'
-  can_tx_pin: GPIO22
-  can_rx_pin: GPIO19
+  can_tx_pin: GPIO6 #GPIO22
+  can_rx_pin: GPIO5 #GPIO19
 
 packages:
   remote_package:
