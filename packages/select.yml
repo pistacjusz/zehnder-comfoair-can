@@ -3,6 +3,7 @@ select:
   - platform: template
     name: 'Fan Speed'
     id: fan_level_select
+    restore_value: no
     icon: mdi:fan
     options:
      - Away
@@ -31,6 +32,7 @@ select:
   - platform: template
     name: 'Temperature Profile'
     id: temperature_profile_select
+    restore_value: no
     icon: mdi:thermometer
     options:
      - "Normal"
@@ -56,6 +58,7 @@ select:
   - platform: template
     name: 'Temperature Passive'
     id: temperature_passive_select
+    restore_value: no
     icon: mdi:thermometer-minus
     options:
      - "On"
@@ -75,6 +78,7 @@ select:
   - platform: template
     name: 'Humidity Comfort'
     id: humidity_comfort_select
+    restore_value: no
     icon: mdi:water-percent
     options:
      - "On"
@@ -93,6 +97,7 @@ select:
   - platform: template
     name: 'Humidity Protection'
     id: humidity_protection_select
+    restore_value: no
     icon: mdi:water-percent
     options:
      - "On"
