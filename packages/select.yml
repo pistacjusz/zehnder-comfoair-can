@@ -13,10 +13,12 @@ select:
     set_action:
       - if:
           condition:
-            not:
-              text_sensor.state:
-                id: fan_level
-                state: !lambda 'return x;'
+            and:
+              - lambda: 'return id(system_ready);'
+              - not:
+                  text_sensor.state:
+                    id: fan_level
+                    state: !lambda 'return x;'
           then:
           - lambda: |
               if (x == "Away") {
