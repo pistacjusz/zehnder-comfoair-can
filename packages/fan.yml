@@ -22,10 +22,11 @@ fan:
             - select.set:
                 id: fan_level_select
                 option: "Away"
-    on_speed_set:
+     on_speed_set:
       - if:
           condition:
             and:
+              - lambda: 'return id(system_ready);' # <--- NOWY WARUNEK
               - fan.is_on: comfoair_fan
               - not:
                   lambda: return int(id(fan_level_raw).state) == id(comfoair_fan).speed;
