@@ -115,10 +115,12 @@ select:
      - "Auto only"
      - "Off"
     set_action: 
+      - logger.log: "Kliknięto przełącznik!" # To pojawi się w logach zawsze
       - if:
           condition:
             lambda: 'return id(system_ready);' # Blokada startowa
           then: 
+            - logger.log: "Blokada 20s puszczona, wysyłam do Zehndera"
       - lambda: |
           if (x == "Off") {
             id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
