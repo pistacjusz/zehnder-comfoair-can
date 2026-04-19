@@ -59,7 +59,7 @@ select:
                   id(comfoair)->set_temp_profile(zehnder_comfoair_q::TEMP_PROFILE_WARM);
                 }
 
-- platform: template
+  - platform: template
     name: 'Temperature Passive'
     id: temperature_passive_select
     restore_value: no
