@@ -73,14 +73,10 @@ select:
           condition:
             lambda: 'return id(system_ready);'
           then:
-            - lambda: |
-                if (x == "Off") {
-                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_OFF);
-                } else if (x == "Auto only") {
-                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_AUTO);
-                } else if (x == "On") {
-                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_ON);
-                }
+            - lambda: |-
+                if (x == "Off") id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_OFF);
+                else if (x == "Auto only") id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_AUTO);
+                else if (x == "On") id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_ON);
 
   - platform: template
     name: 'Humidity Comfort'
@@ -96,14 +92,10 @@ select:
           condition:
             lambda: 'return id(system_ready);'
           then: 
-            - lambda: |
-                if (x == "Off") {
-                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_OFF);
-                } else if (x == "Auto only") {
-                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_AUTO);
-                } else if (x == "On") {
-                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_ON);
-                }
+            - lambda: |-
+                if (x == "Off") id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_OFF);
+                else if (x == "Auto only") id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_AUTO);
+                else if (x == "On") id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_ON);
           
   - platform: template
     name: 'Humidity Protection'
@@ -119,11 +111,7 @@ select:
           condition:
             lambda: 'return id(system_ready);'
           then: 
-            - lambda: |
-                if (x == "Off") {
-                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
-                } else if (x == "Auto only") {
-                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_AUTO);
-                } else if (x == "On") {
-                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
-                }
+            - lambda: |-
+                if (x == "Off") id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
+                else if (x == "Auto only") id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_AUTO);
+                else if (x == "On") id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
