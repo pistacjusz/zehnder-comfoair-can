@@ -9,11 +9,19 @@ fan:
     restore_mode: NO_RESTORE
     # restore_mode: RESTORE_DEFAULT_ON
     on_turn_on:
-      - switch.turn_on: auto_ventilation
+      - if:
+          condition:
+            lambda: 'return id(system_ready);' # Sprawdz czy minęło 20s
+          then:
+            - switch.turn_on: auto_ventilation
     on_turn_off:
-      - select.set:
-          id: fan_level_select
-          option: "Away"
+      - if:
+          condition:
+            lambda: 'return id(system_ready);' # Sprawdz czy minęło 20s
+          then:
+            - select.set:
+                id: fan_level_select
+                option: "Away"
     on_speed_set:
       - if:
           condition:
