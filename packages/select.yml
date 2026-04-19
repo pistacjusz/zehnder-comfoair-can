@@ -40,15 +40,15 @@ select:
      - "Normal"
      - "Cool"
      - "Warm"
-   set_action:
+    set_action:
       - if:
           condition:
             and:
               - lambda: 'return id(system_ready);' # Blokada startowa
               - not:
                   text_sensor.state:
-                id: temperature_profile
-                state: !lambda 'return x;'
+                    id: temperature_profile
+                    state: !lambda 'return x;'
           then:
             - lambda: |
                 if (x == "Normal") {
