@@ -20,16 +20,16 @@ select:
                     id: fan_level
                     state: !lambda 'return x;'
           then:
-          - lambda: |
-              if (x == "Away") {
-                id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_AWAY);
-              } else if (x == "Low") {
-                id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_LOW);
-              } else if (x == "Medium") {
-                id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_MEDIUM);
-              } else if (x == "High") {
-                id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_HIGH);
-              }
+            - lambda: |
+                if (x == "Away") {
+                  id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_AWAY);
+                } else if (x == "Low") {
+                  id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_LOW);
+                } else if (x == "Medium") {
+                  id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_MEDIUM);
+                } else if (x == "High") {
+                  id(comfoair)->set_ventilation_level(zehnder_comfoair_q::VENTILATION_LEVEL_HIGH);
+                }
 
   - platform: template
     name: 'Temperature Profile'
@@ -73,14 +73,14 @@ select:
           condition:
             lambda: 'return id(system_ready);' # Blokada startowa
           then:
-      - lambda: |
-          if (x == "Off") {
-            id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_OFF);
-          } else if (x == "Auto only") {
-            id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_AUTO);
-          } else if (x == "On") {
-            id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_ON);
-          }
+            - lambda: |
+                if (x == "Off") {
+                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_OFF);
+                } else if (x == "Auto only") {
+                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_AUTO);
+                } else if (x == "On") {
+                  id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_ON);
+                }
 
   - platform: template
     name: 'Humidity Comfort'
@@ -96,14 +96,14 @@ select:
           condition:
             lambda: 'return id(system_ready);' # Blokada startowa
           then: 
-      - lambda: |
-          if (x == "Off") {
-            id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_OFF);
-          } else if (x == "Auto only") {
-            id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_AUTO);
-          } else if (x == "On") {
-            id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_ON);
-          }
+            - lambda: |
+                if (x == "Off") {
+                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_OFF);
+                } else if (x == "Auto only") {
+                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_AUTO);
+                } else if (x == "On") {
+                  id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_ON);
+                }
           
   - platform: template
     name: 'Humidity Protection'
@@ -121,11 +121,11 @@ select:
             lambda: 'return id(system_ready);' # Blokada startowa
           then: 
             - logger.log: "Blokada 20s puszczona, wysyłam do Zehndera"
-      - lambda: |
-          if (x == "Off") {
-            id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
-          } else if (x == "Auto only") {
-            id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_AUTO);
-          } else if (x == "On") {
-            id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
-          }
+            - lambda: |
+                if (x == "Off") {
+                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
+                } else if (x == "Auto only") {
+                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_AUTO);
+                } else if (x == "On") {
+                 id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
+                }
