@@ -40,11 +40,13 @@ select:
      - "Normal"
      - "Cool"
      - "Warm"
-    set_action:
+   set_action:
       - if:
           condition:
-            not:
-              text_sensor.state:
+            and:
+              - lambda: 'return id(system_ready);' # Blokada startowa
+              - not:
+                  text_sensor.state:
                 id: temperature_profile
                 state: !lambda 'return x;'
           then:
@@ -67,7 +69,10 @@ select:
      - "Auto only"
      - "Off"
     set_action:
-      # map options to enum
+      - if:
+          condition:
+            lambda: 'return id(system_ready);' # Blokada startowa
+          then:
       - lambda: |
           if (x == "Off") {
             id(comfoair)->set_temperature_passive(zehnder_comfoair_q::OAO_OFF);
@@ -87,6 +92,10 @@ select:
      - "Auto only"
      - "Off"
     set_action: 
+      - if:
+          condition:
+            lambda: 'return id(system_ready);' # Blokada startowa
+          then: 
       - lambda: |
           if (x == "Off") {
             id(comfoair)->set_humidity_comfort(zehnder_comfoair_q::OAO_OFF);
@@ -106,6 +115,10 @@ select:
      - "Auto only"
      - "Off"
     set_action: 
+      - if:
+          condition:
+            lambda: 'return id(system_ready);' # Blokada startowa
+          then: 
       - lambda: |
           if (x == "Off") {
             id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
