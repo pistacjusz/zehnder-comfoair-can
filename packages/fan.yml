@@ -22,7 +22,7 @@ fan:
             - select.set:
                 id: fan_level_select
                 option: "Away"
-     on_speed_set:
+    on_speed_set:
       - if:
           condition:
             and:
