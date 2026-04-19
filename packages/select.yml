@@ -59,19 +59,19 @@ select:
                   id(comfoair)->set_temp_profile(zehnder_comfoair_q::TEMP_PROFILE_WARM);
                 }
 
-  - platform: template
+- platform: template
     name: 'Temperature Passive'
     id: temperature_passive_select
     restore_value: no
     icon: mdi:thermometer-minus
     options:
-     - "On"
-     - "Auto only"
-     - "Off"
+      - "On"
+      - "Auto only"
+      - "Off"
     set_action:
       - if:
           condition:
-            lambda: 'return id(system_ready);' # Blokada startowa
+            lambda: 'return id(system_ready);'
           then:
             - lambda: |
                 if (x == "Off") {
@@ -88,13 +88,13 @@ select:
     restore_value: no
     icon: mdi:water-percent
     options:
-     - "On"
-     - "Auto only"
-     - "Off"
+      - "On"
+      - "Auto only"
+      - "Off"
     set_action: 
       - if:
           condition:
-            lambda: 'return id(system_ready);' # Blokada startowa
+            lambda: 'return id(system_ready);'
           then: 
             - lambda: |
                 if (x == "Off") {
@@ -111,21 +111,19 @@ select:
     restore_value: no
     icon: mdi:water-percent
     options:
-     - "On"
-     - "Auto only"
-     - "Off"
+      - "On"
+      - "Auto only"
+      - "Off"
     set_action: 
-      - logger.log: "Kliknięto przełącznik!" # To pojawi się w logach zawsze
       - if:
           condition:
-            lambda: 'return id(system_ready);' # Blokada startowa
+            lambda: 'return id(system_ready);'
           then: 
-            - logger.log: "Blokada 20s puszczona, wysyłam do Zehndera"
             - lambda: |
                 if (x == "Off") {
                   id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_OFF);
                 } else if (x == "Auto only") {
                   id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_AUTO);
                 } else if (x == "On") {
-                 id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
+                  id(comfoair)->set_humidity_protection(zehnder_comfoair_q::OAO_ON);
                 }
